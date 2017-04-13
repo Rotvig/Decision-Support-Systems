@@ -1,28 +1,21 @@
-import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import datasets, linear_model
 
-data = np.loadtxt("housing.data")
-# Load the diabetes dataset
-diabetes = datasets.load_diabetes()
-predXData = []
-predYData = []
-predZData = []
-for item in data:
-    predXData.append([item[12]])
-    predZData.append([item[0]])
-    predYData.append(item[13])
+boston = datasets.load_boston()
 
-x_train = np.array([predXData, predZData]).reshape(-1,2)
-# Create linear regression object
-regr = linear_model.LinearRegression()
-regr.fit(x_train, predYData)
+lm = linear_model.LinearRegression()
+boston_X_train = boston.data
+boston_X_test = boston.data
 
-# Plot outputs
-plt.scatter(x_train, predYData,  color='black')
-plt.plot(x_train, regr.predict(x_train), color='blue', linewidth=3)
+boston_Y_train = boston.target
+boston_Y_test = boston.target
 
-plt.xticks(())
-plt.yticks(())
+lm.fit(boston_X_train, boston_Y_train)
 
-plt.show()
+# The coefficients
+print('Coefficients: \n', lm.coef_)
+# The mean squared error
+print("Mean squared error: %.2f"
+      % np.mean((lm.predict(boston_X_test) - boston_Y_test) ** 2))
+# Explained variance score: 1 is perfect prediction
+print('Variance score: %.2f' % lm.score(boston_X_test, boston_Y_test))
