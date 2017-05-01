@@ -1,3 +1,5 @@
+# http://www.science.smith.edu/~jcrouser/SDS293/labs/lab5/Lab%205%20-%20LDA%20and%20QDA%20in%20Python.pdf
+
 import pandas as pd
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn import metrics
@@ -20,7 +22,7 @@ print(qda_result.score(x_train, y_train), qda_result.score(x_test, y_test))
 
 print "\n"
 print"Confusion matrix:"
-print(pd.crosstab(y_test, qda_result.predict(x_test),rownames=['True'], colnames=['Predicted'], margins=True))
+print(pd.crosstab(y_test, qda_result.predict(x_test), rownames=['True'], colnames=['Predicted'], margins=True))
 
 print "\n"
 print "classification report"
