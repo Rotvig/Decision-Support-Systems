@@ -4,11 +4,6 @@ from sklearn.model_selection import train_test_split
 from sklearn import preprocessing as pp
 import numpy as np
 
-def poly(x, p):
-    x = np.array(x)
-    X = np.transpose(np.vstack((x**k for k in range(p+1))))
-    return np.linalg.qr(X)[0][:,1:]
-
 data = pd.read_csv('Auto.csv', usecols=range(0,8), parse_dates=True)
 df = pd.DataFrame({'mpg': data['mpg'],'horsepower': data['horsepower'].apply(pd.to_numeric, errors='coerce')})
 train, test = train_test_split(df, test_size = 0.5)
@@ -35,8 +30,7 @@ lm_poly.fit(x, Y_train)
 
 print("Mean squared error with 2-degree Poly: %.2f"
       % np.mean((Y_test - lm_poly.predict(x_t)) ** 2))
-
-
+      
 # Polyomial 3-degree
 poly = pp.PolynomialFeatures(3)
 x = poly.fit_transform(X_train)
