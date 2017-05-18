@@ -89,3 +89,5 @@ plt.plot(bic)
 plt.plot(bic.argmin(), bic.min(), "or")
 plt.xlabel('# Predictors')
 plt.ylabel('BIC')
+
+plt.show()
