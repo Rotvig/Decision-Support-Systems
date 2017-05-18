@@ -55,3 +55,7 @@ y = df.Salary
 X_ = df.drop(['Salary', 'League', 'Division', 'NewLeague'], axis=1).astype('float64')
 # Define the feature set X.
 X = pd.concat([X_, dummies[['League_N', 'Division_W', 'NewLeague_N']]], axis=1)
+
+'''
+train, test = train_test_split(data, test_size = 0.5)
+'''
