@@ -27,7 +27,6 @@ def getBest(k):
     return best_model
 	
 def forward(predictors):
-
     # Pull out predictors we still need to process
     remaining_predictors = [p for p in X.columns if p not in predictors]    
     tic = time.time()    
