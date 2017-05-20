@@ -5,8 +5,12 @@ from sklearn.datasets.samples_generator import make_blobs
 
 k=2
 
-X, y = make_blobs(n_samples=50, centers=k)
+X, y = make_blobs(n_samples=50, centers=k, n_features=2, random_state=0)
 
+'''
+samples = np.random.standard_normal((25,k))
+X = [samples[:,0]+3] + [samples[:,1]-4]
+'''
 kmeans = KMeans(n_clusters=k, random_state=0).fit(X)
 
 labels = kmeans.labels_
